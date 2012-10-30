@@ -17,7 +17,8 @@ public abstract class Event{
 	
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
-	
+	//setzt bzw erzeugt alle noetigen Variablen des Objektes 
+	//location, date und member immer != null
 	public Event(int duration, Location location, Calendar date, ArrayList<Member> member){
 		this.duration = duration;
 		this.location = location;
@@ -27,25 +28,28 @@ public abstract class Event{
 		this.eventMessages = new ArrayList<Message>();
 	}
 	
+	//liefert location zurueck
 	public Location getLocation(){
 		return location;
 	}
 	
-	
+	//liefert duration zurueck
 	public int getDuration(){
 		return duration;
 	}
 	
-	
+	//setzt das date des Objektes
+	//date immer != null
 	public void setDate(Calendar date){
 		this.date = date;
 	}	
 	
-	
+	//liefert den aktuellen Wert von date zurueck
 	public Calendar getDate(){
 		return date;
 	}
 	
+	//liefert die list der member zurueck
 	public ArrayList<Member> getMemberList(){
 		
 		return this.member;
@@ -88,7 +92,7 @@ public abstract class Event{
 	/*
 	Die ArrayList "member" muss mindestens einen Member enthalten - Dies wird nirgends Uebeprueft
 	
-	es wird eine arraylist mit songs zurueckgegeben. Der Inhalt kann zwischen null und "unendlich" liegen
+	es wird eine arraylist mit songs zurueckgegeben.
 	*/
 	
 	public ArrayList<Song> getListOfSongsPlayable(){
@@ -112,43 +116,39 @@ public abstract class Event{
 		return pSongs;
 	}
 	
-	
+	//setzt prevEvents auf eine Liste von Events
+	//eventList immer != null
 	public void setPreviousEvents(ArrayList<Event> eventList){
 		
 		this.prevEvents = eventList;
 		
 	}
-	
-	/**
-	 * Retrieves the ArrayList<Event> that contains the previous versions of the events.
-	 * @return		ArrayList<Event> with previous events
-	 */
+
+	//liefert den Inhalt von prevEvents zurueck
 	public ArrayList<Event> getPreviousEvents(){
 		
 		return this.prevEvents;
 		
 	}
 	
+	//liefert einen lesbaren String des Objektes zurueck
 	public String toString(){
 		return "Location: " + location.toString() + ", Duration: " + duration + ", Date: " + dateFormat.format(date.getTime());
 	}
-	
-	/**
-	 * decline Event
-	 */
+
+	//fuegt eine neue EventMessage zur eventMessages Liste hinzu
 	public void declineEvent(String message, Member member)
 	{
 		eventMessages.add(new EventMessage(message, member, State.DECLINE));
 	}
 
-	/**
-	 * accept Event
-	 */
+	//fuegt eine neue EventMessage zur eventMessages Liste hinzu
 	public void acceptEvent(String message, Member member)
 	{
 		eventMessages.add(new EventMessage(message, member,  State.ACCEPT));
 	}	
 	
+	//gibt einen lesbaren String der eventMessages Liste zurueck
 	public String getMessages()
 	{
 		String messages = "";

@@ -31,7 +31,6 @@ public class Member {
 	}
 	
 	//gibt ein enteringDate zurueck
-	//enteringDate darf nicht null sein
 	public Calendar getEntryDate(){
 		
 		return this.enteringDate;

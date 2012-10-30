@@ -15,13 +15,7 @@ public class Rehearsal extends Event{
 		this.rent = rent;
 	}
 	
-	/**
-	 * sets the "rent" of the Rehearsal
-	 *
-	 * @param rent 
-	 *
-	 */
-	
+	 
 	public void setRent(int rent){
 		this.rent = rent;
 	}

@@ -43,18 +43,25 @@ public abstract class Event{
 	public Calendar getDate(){
 		return date;
 	}
-	
-	/**
-	 * Returns the list of the current member for this Event
-	 * 
-	 * @return	a ArrayList<Member> of members of the events
-	 */
+	/*
+		Vorbedingung:
+		Nachbedingung: 
+	*/
 	
 	public ArrayList<Member> getMemberList(){
 		
 		return this.member;
 		
 	}
+	/*
+	Vorbedingung: Die ArrayList "member" muss mindestens einen Member enthalten
+				  
+			      FEHLER: Dies wird nirgends ueberprueft
+	
+	Nachbedingung: Das ergebnis ist ein String, der entweder aussagt, dass keine
+				   Stücke gemeinsam gespielt werden können, oder die String mit
+				   den Namen der Stücke getrennt durch ein newline
+	*/
 	
 	public String getStringOfSongsPlayable(){
 		String playableSongs = "";
@@ -83,7 +90,14 @@ public abstract class Event{
 		
 		return playableSongs;
 	}
+	/*
+	Vorbedingung: Die ArrayList "member" muss mindestens einen Member enthalten
+				  
+			      Selber FEHLER wie bei der Methode zuvor
 	
+	Nachbedingung: es wird eine arraylist mit songs zurueckgegeben. Der Inhalt 
+				   kann zwischen null und "unendlich" liegen
+	*/
 	
 	public ArrayList<Song> getListOfSongsPlayable(){
 			
@@ -105,10 +119,11 @@ public abstract class Event{
 		
 		return pSongs;
 	}
-	/**
-	 * Sets an ArrayList<Event> that contains the previous versions of the events.
-	 * @param	eventList	an arraylist with the previous states of this event.
-	 */
+	
+	/*
+		Vorbedingung: 
+	*/
+	
 	public void setPreviousEvents(ArrayList<Event> eventList){
 		
 		this.prevEvents = eventList;

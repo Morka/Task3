@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public abstract class Event{
 	
-	private int duration; //duration of the Event
-	private Location location; //location of the Event
-	private Calendar date; //date AND time of the Event
-	private ArrayList<Member> member; //member who are playing at this Event
+	private int duration;
+	private Location location;
+	private Calendar date;
+	private ArrayList<Member> member;
 	private ArrayList<Event> prevEvents;
 	private ArrayList<Message> eventMessages;
 	

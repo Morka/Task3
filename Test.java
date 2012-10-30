@@ -1,4 +1,9 @@
 import java.util.ArrayList;
+
+//Wir haben deshalb wahrscheinlich nicht allzuviele 'Good'-Stellen weil wir aufgrund von Zeitdruck die meisten Funktionen innerhalb von Band.java realisiert haben. 
+//Durch staerkere Faktorisierung und Aufgabenteilung sowie zusaetzlichen Klassen(zb EventManager, usw) wuerde man Funktionen eher aus Band.java verdraengen koennen
+//und somit eine schwaechere Objektkopplung erhalten.
+
 import java.util.Calendar;
 
 public class Test{
@@ -6,11 +11,7 @@ public class Test{
 		Calendar date = Calendar.getInstance();
 		
 		Band band = new Band();
-		
-		/*
-		 * create locations and store them in the Arraylist of Band
-		 */
-		
+
 		Location location1 = new Location("WUK");
 		Location location2 = new Location("Arena");
 		Location location3 = new Location("Posthof");
@@ -20,13 +21,7 @@ public class Test{
 		band.addLocation(location2);
 		band.addLocation(location3);
 		band.addLocation(location4);
-		
-		/*
-		 * New descriptions are added. location1 and location4 descriptions are 
-		 * perfekt while location2 descriptions have wrong cases, which is 
-		 * filterd and location3 has a Typo, which can't be filtered by 
-		 * the programm. 
-		 */ 
+
 		location1.addDescription("Food", "There is a catering");
 		location1.addDescription("Equipment", "Nice Equipment is provided");
 		location2.addDescription("FoOd", "Lots of delicious food!");
@@ -36,10 +31,6 @@ public class Test{
 		location4.addDescription("Food", "wonderful service");
 		location4.addDescription("Equipment", "nice microfones");
 		location4.addDescription("Free Beer", "");
-		
-		/*
-		 * toBeFound is the Array which contains the strings which are to be found	
-		 */
 		
 		ArrayList<String> toBeFound = new ArrayList<String>();
 		toBeFound.add("Food");
@@ -126,49 +117,7 @@ public class Test{
 		
 		gig1.acceptEvent("termin ist perfekt", member1);
 		gig1.declineEvent("habe keine zeit", member2);
-		
-		/*
-		
-		Expected output from the test case below:	
 
-		Aktuelle Events:
-		Location: WUK, Duration: 2500, Date: 24.10.2012, Fee: 2000000
-		Location: Arena, Duration: 200, Date: 24.10.2012, Fee: 100000
-		Location: Posthof, Duration: 90, Date: 24.10.2012, Rent: 50
-		
-
-		Geaenderte Events:
-		Location: Arena, Duration: 200, Date: 24.10.2012, Fee: 100000
-		Location: Posthof, Duration: 90, Date: 24.10.2012, Rent: 50
-		Location: Arena, Duration: 2000, Date: 24.10.2012, Fee: 2000000
-
-		Rueckgaengiggemachte Eventaenderung:
-		Location: Arena, Duration: 200, Date: 24.10.2012, Fee: 100000
-		Location: Posthof, Duration: 90, Date: 24.10.2012, Rent: 50
-		Location: WUK, Duration: 2500, Date: 24.10.2012, Fee: 2000000
-
-		Events nach loeschen:
-		Location: Arena, Duration: 200, Date: 24.10.2012, Fee: 100000
-		Location: Posthof, Duration: 90, Date: 24.10.2012, Rent: 50
-
-		Events nach recovery:
-		Location: Arena, Duration: 200, Date: 24.10.2012, Fee: 100000
-		Location: Posthof, Duration: 90, Date: 24.10.2012, Rent: 50
-		Location: WUK, Duration: 2500, Date: 24.10.2012, Fee: 2000000
-		
-		Fees:
-		2000000
-		Rents:
-		0
-		Summe Sonstige Ein/Ausgaben:
-		-550
-		Summe Ein/Ausgaben fuer Kategorie Drums:
-		-600
-		Summe Ein/Ausgaben fuer Kategorie Free Beer:
-		50
-
-
-		 */
 		band.addEvent(gig1);
 		band.addEvent(gig2);
 		band.addEvent(reh1);
@@ -189,13 +138,7 @@ public class Test{
 		System.out.println(band.showEvents());
 		System.out.println("Events nach recovery:");
 		band.undeleteEvent(gig1);
-		System.out.println(band.showEvents());
-		
-		/*System.out.println("Messages Mitglied 1:");
-		System.out.println(member1.getMessages());
-		System.out.println("Messages Mitglied 2:");
-		System.out.println(member2.getMessages());
-		System.out.println(gig1.getMessages());*/
+
 		
 		System.out.println("Summe Fees:");
 		System.out.println(Budget.getFees(band.getEventList(),date,date));

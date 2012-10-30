@@ -7,6 +7,7 @@ import java.util.Calendar;
 public class Song
 {
 	//GOOD: Klassenzusammenhalt
+	//Attribute sind alle private und abrufbar, lediglich das Enddatum (end) kann verändert werden
 	private String name;  	
 	private int length; 	//length in seconds, always positiv and > 0
 	private Calendar start;	//Date of first appearence in repertoire, start <= current Date

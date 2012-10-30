@@ -3,6 +3,9 @@ import java.util.Calendar;
 import java.util.Iterator;
 
 public class Budget {
+	//GOOD: Objektkoppelung
+	//alle Attribute in Budget können von außen nicht verändert werden
+	
 	private String budgetname; 
 	private Calendar date; //Datum wann Objekt Budget hinzugefügt wurde, date <= aktuelles Datum
 	//ERROR: value sollte den Datentyp double haben
@@ -32,7 +35,7 @@ public class Budget {
 		return date;
 	}
 	
-	//BAD: schlechte Objektkoppelung, gehört in Klasse Band oder in eigene Budgetverwaltungsklasse
+	//BAD: schlechter Klassenzusammenhalt, gehört in Klasse Band oder in eigene Budgetverwaltungsklasse
 	//NOTE: adds up all miscellaneous costs/revenues for specific category and period
 	static public int getMisc(ArrayList<Budget> budgetStack, String category, Calendar fromDate, Calendar toDate)
 	{

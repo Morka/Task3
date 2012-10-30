@@ -60,7 +60,7 @@ public class Band {
 	/**
 	 * Adds a song to the repertoire ArrayList
 	 * 
-	 * @param newSong	a new song for the bands repertoire
+	 * @param newSong	a new song for the bands repertoire, newsong != null
 	 */
 	public void addTrack(Song newSong){
 
@@ -235,16 +235,17 @@ public class Band {
 	/**
 	 * Shows the songs the band is able to play during a specified timeframe
 	 * 
-	 * @param fromDate	beginn date of the timeframe
-	 * @param toDate	end date of the timeframe
+	 * @param fromDate	beginn date of the timeframe, always <= toDate
+	 * @param toDate	end date of the timeframe, always >= fromDate
 	 * @return			a printable representation of all the songs the band is able to play
 	 */
 	public String showSongs(Calendar fromDate, Calendar toDate){
-
 		String retString = "";
 		fromDate.add(Calendar.DAY_OF_MONTH, -1);
 		toDate.add(Calendar.DAY_OF_MONTH, 1);
-
+		//BAD: wenn fromDate und toDate das gleiche Objekt sind, wird bei fromDate.add(...) und toDate.add(...) auf das gleiche Objekt zugegriffen
+		//entweder zwei verschiedene Objekte übergeben und als Vorbedingung festlegen oder fromDate bzw. toDate clonen
+		
 		for(Song r : this.songList){
 
 			if(r.getEndDate() == null && (r.getStartDate().after(fromDate) && r.getStartDate().before(toDate))) {
@@ -267,6 +268,7 @@ public class Band {
 	 * 
 	 * @return	ArrayList of Events
 	 */
+	 //BAD: überflüssig, wenn getRents(...) und getFees(...) von Budget in Band verschoben wird
 	public ArrayList<Event> getEventList()
 	{
 		return eventList;
@@ -277,6 +279,7 @@ public class Band {
 	 * 
 	 * @return	ArrayList of Budget
 	 */
+	 //BAD: überflüssig, wenn getMisc(...) und getAllMisc(...) von Budget in Band verschoben wird
 	public ArrayList<Budget> getBudgetList()
 	{
 		return budgetList;

@@ -3,7 +3,7 @@ import java.util.Calendar;
 public class Message
 {
 	String message;
-	Calendar date;
+	Calendar date; // always <= curent Date
 	
 	public Message(String message)
 	{

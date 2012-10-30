@@ -12,6 +12,7 @@ public class Member {
 	private ArrayList<Song> songList;
 	private ArrayList<Message> messageList;
 	
+	//speichert membername, telNumber und instrument in entsprechenden variablen und erzeugt instanzen von songList und messageList
 	public Member(String memberName, String telNumber, String instrument){
 		
 		this.name = memberName;
@@ -21,62 +22,45 @@ public class Member {
 		this.songList = new ArrayList<Song>();
 		this.messageList =  new ArrayList<Message>();
 	}
-	
-	/**
-	 * sets the "exitDate" of the member to the current date
-	 *
-	 */
-	
+
+	//setzt ein exitDate
 	public void memberExit(){
 		
 		this.exitDate = Calendar.getInstance();
 		
 	}
 	
-	/**
-	 * Gives back a the "enteringDate" of the Member
-	 *
-	 * @return Calendar
-	 */
-	
+	//gibt ein enteringDate zurueck
+	//enteringDate darf nicht null sein
 	public Calendar getEntryDate(){
 		
 		return this.enteringDate;
 		
 	}
-	
-	/**
-	 * Gives back a the "exitDate" of the Member
-	 *
-	 * @return Calendar
-	 */
-	
+
+	//gibt ein exitDate zurueck
 	public Calendar getExitDate(){
 		
 		return this.exitDate;
 		
 	}
-	/**
-	 *	Adds a song to the Repertoire of the Member
-	 */
+
+	//speichert einen neuen Song in der songList
 	public void addSongToList(Song song){
 		songList.add(song);
 	}
-	
-	/**
-	 * Gets the List of Songs, the member can play
-	 */
+
+	//liefert die songListe des Objektes zurueck
 	public ArrayList<Song> getSongsList(){
 		return songList;
 	}
-	
-	/**
-	 * adds Message to Messages of the Member
-	 */
+
+	//fuegt eine message zur messageList hinzu
 	public void addMessage(String message){
 		messageList.add(new Message(message));
 	}
 	
+	//liefert eine lesbare String Repraesentation der messageList zurueck
 	public String getMessages()
 	{
 		String messages = "";
@@ -88,7 +72,7 @@ public class Member {
 		return messages;
 	}
 		
-	
+	//liefert eine lesbare String Repraesentation der songList zurueck
 	public String getSongsString(){
 		String songs = "";
 		
@@ -99,10 +83,12 @@ public class Member {
 		return songs;
 	}
 	
+	//liefert einen lesbare String des Objektes zurueck
 	public String toString(){
 		return "Name: " + name + ", Instrument: " + instrument;
 	}
 	
+	//gibt den name des Objektes zurueck
 	public String getName()
 	{
 		return name;

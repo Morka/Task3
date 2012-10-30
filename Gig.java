@@ -6,7 +6,9 @@ import java.util.ArrayList;
  */
 
 public class Gig extends Event{
-	
+	/*
+	Invariante: fee darf nicht kleiner 0 sein
+	*/
 	private int fee;
 	
 	public Gig(int duration, Location location, Calendar date, int fee, ArrayList<Member> member){
@@ -15,25 +17,16 @@ public class Gig extends Event{
 		this.fee = fee;
 	}
 	
-	/**
-	 * Gives back the "fee" of the Gig
-	 *
-	 * @param  
-	 *
-	 * @return integer which contains the fee
-	 */
-	
+	/*
+	Nachbedingung: fee darf nicht kleiner 0 sein
+	*/
 	public int getFee(){
 		return fee;
 	}
 	
-	/**
-	 * sets a Fee
-	 *
-	 * @param fee integer which specifies the fee
-	 *
-	 */
-	
+	/*
+	Vorbedingung: other.fee darf nicht kleiner 0 sein
+	*/
 	public void setFee(int fee){
 		this.fee = fee;
 	}

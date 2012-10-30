@@ -5,12 +5,6 @@ public class Location{
 	
 	private final String name;
 	
-	/**
-	* HashKey stores the name of the description (the value, which is searched 
-	* for. 
-	* HashValue stores the description of the Location
-	*/
-	
 	private HashMap<String, String> placeDescriptions; 
 	
 	public Location(String name){
@@ -22,26 +16,24 @@ public class Location{
 		return name;
 	}
 	
-	/**
-	* adds a name and description to "placeDescriptions"
-	* 
-	* @param nameOfDesccription short description and value that is searched for
-	* @param description detailed description 
-	*
+	
+	/*
+	Vorbedingung: nameOfDescription darf nicht null sein
+	Invariante: placeDescriptions enthaelt die nameOfDescription in kleinbuchstaben
+				-> keine unterscheidung der klein-gro§ schreibweise
+	
 	*/
+	
 	public void addDescription(String nameOfDescription, String description){
 		nameOfDescription = nameOfDescription.toLowerCase();
 		
 		placeDescriptions.put(nameOfDescription, description);			
 	}
 	
-	/**
-	* gives back the detailed description
-	*
- 	* @param nameOfDescription short description
-	* @return a String which contains the detailed description or "Not Found"
+	/*
+	Vorbedingung: nameOfDescription darf nicht null sein
+	Nachbedingung: gibt einen String zurueck 
 	*/
-	
 	public String searchDescription(String nameOfDescription){
 		String description = "Not Found";
 		nameOfDescription = nameOfDescription.toLowerCase();
@@ -54,12 +46,10 @@ public class Location{
 		return description;
 	}
 	
-	/**
-	* tests if every Infrastracture that is needed is available
-	*
-	* @param neededInfrastracture ArrayList containing strings of names of descriptions
-	* 
-	* @return "true" if everything(!) is found, "false" if not
+	/*
+	Vorbedingung: listOfNeededThings darf nicht null sein
+	Nachbedingung: wenn alle benštigten dinge vorhanden sind, soll true zurueckgegeben
+				   werden, sonst false
 	*/
 	
 	public boolean neededInfrastructure(ArrayList<String> listOfNeededThings){

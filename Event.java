@@ -36,17 +36,15 @@ public abstract class Event{
 		return duration;
 	}
 	
+	
 	public void setDate(Calendar date){
 		this.date = date;
 	}	
 	
+	
 	public Calendar getDate(){
 		return date;
 	}
-	/*
-		Vorbedingung:
-		Nachbedingung: 
-	*/
 	
 	public ArrayList<Member> getMemberList(){
 		
@@ -55,8 +53,7 @@ public abstract class Event{
 	}
 	/*
 	Vorbedingung: Die ArrayList "member" muss mindestens einen Member enthalten
-				  
-			      FEHLER: Dies wird nirgends ueberprueft
+				  Dies wird nirgends ueberprueft!
 	
 	Nachbedingung: Das ergebnis ist ein String, der entweder aussagt, dass keine
 				   StŸcke gemeinsam gespielt werden kšnnen, oder die String mit
@@ -92,8 +89,7 @@ public abstract class Event{
 	}
 	/*
 	Vorbedingung: Die ArrayList "member" muss mindestens einen Member enthalten
-				  
-			      Selber FEHLER wie bei der Methode zuvor
+				  Dies wird nirgends Uebeprueft
 	
 	Nachbedingung: es wird eine arraylist mit songs zurueckgegeben. Der Inhalt 
 				   kann zwischen null und "unendlich" liegen
@@ -120,9 +116,6 @@ public abstract class Event{
 		return pSongs;
 	}
 	
-	/*
-		Vorbedingung: 
-	*/
 	
 	public void setPreviousEvents(ArrayList<Event> eventList){
 		

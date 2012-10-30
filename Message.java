@@ -11,6 +11,7 @@ public class Message
 		date = Calendar.getInstance();
 	}
 	
+	//gibt Inhalt der Message zurück
 	public String toString()
 	{
 		return message;	

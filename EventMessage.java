@@ -10,12 +10,13 @@ public class EventMessage extends Message
 		this.state = state;
 	}	
 	
+	//gibt Inhalt der Message zurück
 	public String toString()
 	{
 		String ret = "";
 		
 		ret += message + " Name: " + member.getName() + " State: ";
-		if(state == State.ACCEPT)
+		if(state == State.ACCEPT)  
 			ret += "Accept";
 		else
 			ret += "Decline";

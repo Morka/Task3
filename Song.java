@@ -21,7 +21,7 @@ public class Song
 		this.end = null;
 	}
 	
-	/** NOTE
+	/** 
 	 * sets "end" date
 	 *
 	 * @param date 
@@ -33,7 +33,7 @@ public class Song
 		this.end = date;
 	}
 	
-	/** NOTE
+	/** 
 	 * gives back the "start" date
 	 *
 	 * @param 
@@ -45,7 +45,7 @@ public class Song
 		return start;
 	}
 	
-	/** NOTE
+	/** 
 	 * gives back the "end" date
 	 *
 	 * @param 
@@ -57,7 +57,7 @@ public class Song
 		return end;
 	}
 	
-	/** NOTE
+	/** 
 	 * gives back the "name" of the Song
 	 *
 	 * @param 
@@ -69,7 +69,7 @@ public class Song
 		return name;
 	}
 	
-	/** NOTE
+	/** 
 	 * gives back the "length" of the Song
 	 *
 	 * @param 

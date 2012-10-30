@@ -7,7 +7,7 @@ public class Budget {
 	//alle Attribute in Budget können von außen nicht verändert werden
 	
 	private String budgetname; 
-	private Calendar date; //Datum wann Objekt Budget hinzugefügt wurde, date <= aktuelles Datum
+	private Calendar date; //Datum wann Objekt Budget hinzugefügt wurde, date <= aktuelles Datum, != null
 	//ERROR: value sollte den Datentyp double haben
 	private int value; //kann positive und negative Werte sowie 0 annehmen
 	
@@ -20,23 +20,26 @@ public class Budget {
 		this.date = Calendar.getInstance(); //weist date das aktuelle Datum zu
 	}
 	
+	//gibt Budgetkategorie als String zurück
 	public String getCategory()
 	{
 		return budgetname;
 	}
 	
+	//gibt Wert des Budgets als int-Wert zurück
 	public int getValue()
 	{
 		return value;
 	}
 	
+	//gibt Datum des Budgetpostens zurück
 	public Calendar getDate()
 	{
 		return date;
 	}
 	
 	//BAD: schlechter Klassenzusammenhalt, gehört in Klasse Band oder in eigene Budgetverwaltungsklasse
-	//NOTE: adds up all miscellaneous costs/revenues for specific category and period
+	//adds up all miscellaneous costs/revenues for specific category and period
 	static public int getMisc(ArrayList<Budget> budgetStack, String category, Calendar fromDate, Calendar toDate)
 	{
 		int sum = 0; //kann positive und negative Werte annehmen sowie 0 bleiben
@@ -57,7 +60,7 @@ public class Budget {
 	}	
 	
 	//BAD: schlechte Objektkoppelung, gehört in Klasse Band oder in eigene Budgetverwaltungsklasse
-	//NOTE: adds up all miscellaneous costs/revenues for period
+	//adds up all miscellaneous costs/revenues for period (fromDate to toDate)
 	static public int getAllMisc(ArrayList<Budget> budgetStack, Calendar fromDate, Calendar toDate)
 	{
 		int sum = 0; //kann positive und negative Werte annehmen sowie 0 bleiben
@@ -78,7 +81,7 @@ public class Budget {
 	}
 	
 	//BAD: schlechte Objektkoppelung, gehört in Klasse Band oder in eigene Budgetverwaltungsklasse
-	//NOTE: adds up all rents for Events for period
+	//adds up all rents for Events for period (fromDate to toDate)
 	static public int getRents(ArrayList<Event> events, Calendar fromDate, Calendar toDate)
 	{
 		int sum = 0; //kann positive und negative Werte annehmen sowie 0 bleiben
@@ -99,7 +102,7 @@ public class Budget {
 	}
 	
 	//BAD: schlechte Objektkoppelung, gehört in Klasse Band oder in eigene Budgetverwaltungsklasse
-	//NOTE: adds up all fees for Events for period
+	//adds up all fees for Events for period (fromDate to toDate)
 	static public int getFees(ArrayList<Event> events, Calendar fromDate, Calendar toDate)
 	{
 		int sum = 0; //kann positive und negative Werte annehmen sowie 0 bleiben

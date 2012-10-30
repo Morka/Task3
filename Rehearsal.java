@@ -6,11 +6,8 @@ import java.util.ArrayList;
  */
 
 public class Rehearsal extends Event{
-	
-	/*
-	Invariante: rent darf nicht kleiner 0 sein
-	*/
-	
+
+	//rent darf nicht kleiner 0 sein
 	private int rent;
 
 	public Rehearsal(int duration, Location location, Calendar date, int rent, ArrayList<Member> member){
@@ -19,18 +16,14 @@ public class Rehearsal extends Event{
 		this.rent = rent;
 	}
 	
-	/*
-	Vorbedingung: other.rent muss groe§er 0 sein
-	*/
-	 
+	
+	//other.rent muss groe§er 0 sein
 	public void setRent(int rent){
 		this.rent = rent;
 	}
 	
-	/*
-	Nachbedingung: rent ist immer groe§er 0
-	*/
 	
+	//rent ist immer groe§er 0
 	public int getRent(){
 		return rent;
 	}

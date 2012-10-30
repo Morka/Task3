@@ -52,12 +52,10 @@ public abstract class Event{
 		
 	}
 	/*
-	Vorbedingung: Die ArrayList "member" muss mindestens einen Member enthalten
-				  Dies wird nirgends ueberprueft!
+	Die ArrayList "member" muss mindestens einen Member enthalten - Dies wird nirgends ueberprueft!
 	
-	Nachbedingung: Das ergebnis ist ein String, der entweder aussagt, dass keine
-				   StŸcke gemeinsam gespielt werden kšnnen, oder die String mit
-				   den Namen der StŸcke getrennt durch ein newline
+	Das ergebnis ist ein String, der entweder aussagt, dass keine StŸcke gemeinsam gespielt werden kšnnen, oder die String mit
+	den Namen der StŸcke getrennt durch ein newline
 	*/
 	
 	public String getStringOfSongsPlayable(){
@@ -88,11 +86,9 @@ public abstract class Event{
 		return playableSongs;
 	}
 	/*
-	Vorbedingung: Die ArrayList "member" muss mindestens einen Member enthalten
-				  Dies wird nirgends Uebeprueft
+	Die ArrayList "member" muss mindestens einen Member enthalten - Dies wird nirgends Uebeprueft
 	
-	Nachbedingung: es wird eine arraylist mit songs zurueckgegeben. Der Inhalt 
-				   kann zwischen null und "unendlich" liegen
+	es wird eine arraylist mit songs zurueckgegeben. Der Inhalt kann zwischen null und "unendlich" liegen
 	*/
 	
 	public ArrayList<Song> getListOfSongsPlayable(){

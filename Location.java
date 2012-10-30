@@ -18,8 +18,8 @@ public class Location{
 	
 	
 	/*
-	Vorbedingung: nameOfDescription darf nicht null sein
-	Invariante: placeDescriptions enthaelt die nameOfDescription in kleinbuchstaben
+	nameOfDescription darf nicht null sein
+	placeDescriptions enthaelt die nameOfDescription in kleinbuchstaben
 				-> keine unterscheidung der klein-gro§ schreibweise
 	
 	*/
@@ -31,8 +31,8 @@ public class Location{
 	}
 	
 	/*
-	Vorbedingung: nameOfDescription darf nicht null sein
-	Nachbedingung: gibt einen String zurueck 
+	nameOfDescription darf nicht null sein
+	gibt einen String zurueck 
 	*/
 	public String searchDescription(String nameOfDescription){
 		String description = "Not Found";
@@ -47,9 +47,8 @@ public class Location{
 	}
 	
 	/*
-	Vorbedingung: listOfNeededThings darf nicht null sein
-	Nachbedingung: wenn alle benštigten dinge vorhanden sind, soll true zurueckgegeben
-				   werden, sonst false
+	listOfNeededThings darf nicht null sein
+	wenn alle benštigten dinge vorhanden sind, soll true zurueckgegeben werden, sonst false
 	*/
 	
 	public boolean neededInfrastructure(ArrayList<String> listOfNeededThings){

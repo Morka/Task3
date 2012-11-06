@@ -17,7 +17,7 @@ public abstract class Event{
 	
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
-	//setzt bzw erzeugt alle noetigen Variablen des Objektes 
+	//Nachbedingung: setzt bzw erzeugt alle noetigen Variablen des Objektes 
 	//Vorbedingung: location, date und member immer != null
 	public Event(int duration, Location location, Calendar date, ArrayList<Member> member){
 		this.duration = duration;

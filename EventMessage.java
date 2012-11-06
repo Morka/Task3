@@ -3,6 +3,9 @@ public class EventMessage extends Message
 	State state; //immer != null
 	Member member; //immer != null
 	
+	//Vorbedingung: member != null
+	//Vorbedingung: state != null
+	//Nachbedingung: EventMessage ist vollstÃ¤ndig initialisiert
 	public EventMessage(String message, Member member, State state)
 	{
 		super(message);
@@ -10,7 +13,7 @@ public class EventMessage extends Message
 		this.state = state;
 	}	
 	
-	//gibt Inhalt der Message zurück
+	//Nachbedingung: gibt Inhalt der Message zurï¿½ck
 	public String toString()
 	{
 		String ret = "";

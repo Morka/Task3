@@ -4,15 +4,19 @@ import java.util.Iterator;
 
 public class Budget {
 	//GOOD: Objektkoppelung
-	//alle Attribute in Budget können von außen nicht verändert werden
+	//alle Attribute in Budget kï¿½nnen von auï¿½en nicht verï¿½ndert werden
 	
 	private String budgetname; 
-	private Calendar date; //Datum wann Objekt Budget hinzugefügt wurde, date <= aktuelles Datum, != null
+	private Calendar date; //Datum wann Objekt Budget hinzugefï¿½gt wurde, date <= aktuelles Datum, != null
 	//ERROR: value sollte den Datentyp double haben
 	private int value; //kann positive und negative Werte sowie 0 annehmen
 	
 		
-
+	/** 
+	 * Nachbedingung: Budget wird komplett initialisiert
+	 *
+	 * @return Calendar
+	 */
 	public Budget(String budgetname,int value)
 	{
 		this.budgetname = budgetname;
@@ -20,33 +24,52 @@ public class Budget {
 		this.date = Calendar.getInstance(); //weist date das aktuelle Datum zu
 	}
 	
-	//gibt Budgetkategorie als String zurück
+	/** 
+	 * Nachbedingung: gibt Budgetkategorie als String zurï¿½ck
+	 *
+	 * @return String of budgetname
+	 */
 	public String getCategory()
 	{
 		return budgetname;
 	}
 	
-	//gibt Wert des Budgets als int-Wert zurück
+	/** 
+	 * Nachbedingung: gibt Wert des Budgets als int-Wert zurï¿½ck
+	 *
+	 * @return int of value
+	 */
 	public int getValue()
 	{
 		return value;
 	}
 	
-	//gibt Datum des Budgetpostens zurück
+	/** 
+	 * Nachbedingung: gibt Datum des Budgetpostens zurï¿½ck
+	 * Nachbedingung: date <= current Date
+	 *
+	 * @return Calender of date
+	 */
 	public Calendar getDate()
 	{
 		return date;
 	}
 	
-	//BAD: schlechter Klassenzusammenhalt, gehört in Klasse Band oder in eigene Budgetverwaltungsklasse
-	//adds up all miscellaneous costs/revenues for specific category and period
+	//BAD: schlechter Klassenzusammenhalt, gehï¿½rt in Klasse Band oder in eigene Budgetverwaltungsklasse
+	/** 
+	 * Nachbedingung: adds up all miscellaneous costs/revenues for specific category and period
+	 * Vorbedingung: fromDate <= toDate
+	 * Vorbedingung: toDate >= fromDate
+	 *
+	 * @return int of sum
+	 */
 	static public int getMisc(ArrayList<Budget> budgetStack, String category, Calendar fromDate, Calendar toDate)
 	{
 		int sum = 0; //kann positive und negative Werte annehmen sowie 0 bleiben
 		Iterator<Budget> it = budgetStack.iterator();
-		Calendar from = (Calendar)fromDate.clone(); //fromDate <= toDate
+		Calendar from = (Calendar)fromDate.clone();
 		from.add(Calendar.DAY_OF_MONTH, -1); 
-		Calendar to = (Calendar)toDate.clone(); //toDate >= fromDate
+		Calendar to = (Calendar)toDate.clone();
 		to.add(Calendar.DAY_OF_MONTH, 1);
 		
 		while(it.hasNext()) 
@@ -59,15 +82,21 @@ public class Budget {
 		return sum;
 	}	
 	
-	//BAD: schlechte Objektkoppelung, gehört in Klasse Band oder in eigene Budgetverwaltungsklasse
-	//adds up all miscellaneous costs/revenues for period (fromDate to toDate)
+	//BAD: schlechte Objektkoppelung, gehï¿½rt in Klasse Band oder in eigene Budgetverwaltungsklasse
+	/** 
+	 * Nachbedingung: adds up all miscellaneous costs/revenues for period (fromDate to toDate)
+	 * Vorbedingung: fromDate <= toDate
+	 * Vorbedingung: toDate >= fromDate
+	 *
+	 * @return int of sum
+	 */
 	static public int getAllMisc(ArrayList<Budget> budgetStack, Calendar fromDate, Calendar toDate)
 	{
 		int sum = 0; //kann positive und negative Werte annehmen sowie 0 bleiben
 		Iterator<Budget> it = budgetStack.iterator();
-		Calendar from = (Calendar)fromDate.clone(); //fromDate <= toDate
+		Calendar from = (Calendar)fromDate.clone();
 		from.add(Calendar.DAY_OF_MONTH, -1); 
-		Calendar to = (Calendar)toDate.clone();//toDate >= fromDate
+		Calendar to = (Calendar)toDate.clone();
 		to.add(Calendar.DAY_OF_MONTH, 1);
 		
 		while(it.hasNext())
@@ -80,15 +109,21 @@ public class Budget {
 		return sum;
 	}
 	
-	//BAD: schlechte Objektkoppelung, gehört in Klasse Band oder in eigene Budgetverwaltungsklasse
-	//adds up all rents for Events for period (fromDate to toDate)
+	//BAD: adds up all rents for Events for period (fromDate to toDate)
+	/** 
+	 * Nachbedingung: adds up all miscellaneous costs/revenues for period (fromDate to toDate)
+	 * Vorbedingung: fromDate <= toDate
+	 * Vorbedingung: toDate >= fromDate
+	 *
+	 * @return int of sum
+	 */
 	static public int getRents(ArrayList<Event> events, Calendar fromDate, Calendar toDate)
 	{
 		int sum = 0; //kann positive und negative Werte annehmen sowie 0 bleiben
 		Iterator<Event> it = events.iterator();
-		Calendar from = (Calendar)fromDate.clone(); //fromDate <= toDate
+		Calendar from = (Calendar)fromDate.clone();
 		from.add(Calendar.DAY_OF_MONTH, -1); 
-		Calendar to = (Calendar)toDate.clone(); //toDate >= fromDate
+		Calendar to = (Calendar)toDate.clone();
 		to.add(Calendar.DAY_OF_MONTH, 1);
 		
 		while(it.hasNext())
@@ -101,15 +136,21 @@ public class Budget {
 		return sum;
 	}
 	
-	//BAD: schlechte Objektkoppelung, gehört in Klasse Band oder in eigene Budgetverwaltungsklasse
-	//adds up all fees for Events for period (fromDate to toDate)
+	//BAD: schlechte Objektkoppelung, gehï¿½rt in Klasse Band oder in eigene Budgetverwaltungsklasse
+	/** 
+	 * Nachbedingung: adds up all fees for Events for period (fromDate to toDate)
+	 * Vorbedingung: fromDate <= toDate
+	 * Vorbedingung: toDate >= fromDate
+	 *
+	 * @return int of sum
+	 */
 	static public int getFees(ArrayList<Event> events, Calendar fromDate, Calendar toDate)
 	{
 		int sum = 0; //kann positive und negative Werte annehmen sowie 0 bleiben
 		Iterator<Event> it = events.iterator();
-		Calendar from = (Calendar)fromDate.clone(); //fromDate <= toDate
+		Calendar from = (Calendar)fromDate.clone();
 		from.add(Calendar.DAY_OF_MONTH, -1); 
-		Calendar to = (Calendar)toDate.clone(); //toDate >= fromDate
+		Calendar to = (Calendar)toDate.clone();
 		to.add(Calendar.DAY_OF_MONTH, 1);
 
 		while(it.hasNext())

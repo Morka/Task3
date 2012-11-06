@@ -7,12 +7,14 @@ import java.util.Calendar;
 public class Song
 {
 	//GOOD: Klassenzusammenhalt
-	//Attribute sind alle private und abrufbar, lediglich das Enddatum (end) kann verändert werden
+	//Attribute sind alle private und abrufbar, lediglich das Enddatum (end) kann verï¿½ndert werden
 	private String name;  	
 	private int length; 	//length in seconds, always positiv and > 0
 	private Calendar start;	//Date of first appearence in repertoire, start <= current Date
 	private Calendar end;	//last Date of the song in repertoire, can be NULL
 	
+	
+	//Nachbedingung: Song ist vollstÃ¤ndig initialisiert
 	public Song(String name, int length)
 	{
 		this.name = name;
@@ -22,9 +24,9 @@ public class Song
 	}
 	
 	/** 
-	 * sets "end" date
+	 * Nachbedingung: sets "end" date
 	 *
-	 * @param date 
+	 * @param date
 	 *
 	 * @return Calendar
 	 */
@@ -34,9 +36,7 @@ public class Song
 	}
 	
 	/** 
-	 * gives back the "start" date
-	 *
-	 * @param 
+	 * Nachbedingung: gives back the "start" date
 	 *
 	 * @return Calendar containing the start date
 	 */
@@ -46,9 +46,7 @@ public class Song
 	}
 	
 	/** 
-	 * gives back the "end" date
-	 *
-	 * @param 
+	 * Nachbedingung: gives back the "end" date
 	 *
 	 * @return Calendar containing the end date
 	 */
@@ -58,9 +56,7 @@ public class Song
 	}
 	
 	/** 
-	 * gives back the "name" of the Song
-	 *
-	 * @param 
+	 * Nachbedingung: gives back the "name" of the Song
 	 *
 	 * @return String which contains the name
 	 */
@@ -70,9 +66,7 @@ public class Song
 	}
 	
 	/** 
-	 * gives back the "length" of the Song
-	 *
-	 * @param 
+	 * Nachbedingung: gives back the "length" of the Song
 	 *
 	 * @return integer containing the length
 	 */
@@ -81,6 +75,11 @@ public class Song
 		return length;
 	}	
 	
+	/** 
+	 * Nachbedingung: gives back String of name and length
+	 *
+	 * @return String containing name and length
+	 */
 	public String toString()
 	{
 		return "name: " + name + ", length: " + length;

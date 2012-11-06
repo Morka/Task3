@@ -12,7 +12,7 @@ public class Member {
 	private ArrayList<Song> songList;
 	private ArrayList<Message> messageList;
 	
-	//speichert membername, telNumber und instrument in entsprechenden variablen und erzeugt instanzen von songList und messageList
+	//Nachbedingung: speichert membername, telNumber und instrument in entsprechenden variablen und erzeugt instanzen von songList und messageList
 	public Member(String memberName, String telNumber, String instrument){
 		
 		this.name = memberName;
@@ -23,43 +23,45 @@ public class Member {
 		this.messageList =  new ArrayList<Message>();
 	}
 
-	//setzt ein exitDate
+	//Nachbedingung: setzt ein exitDate
 	public void memberExit(){
 		
 		this.exitDate = Calendar.getInstance();
 		
 	}
 	
-	//gibt ein enteringDate zurueck
+	//Nachbedingung: gibt ein enteringDate zurueck
 	public Calendar getEntryDate(){
 		
 		return this.enteringDate;
 		
 	}
 
-	//gibt ein exitDate zurueck
+	//Nachbedingung: gibt ein exitDate zurueck
 	public Calendar getExitDate(){
 		
 		return this.exitDate;
 		
 	}
 
-	//speichert einen neuen Song in der songList
+	//Vorbedingung: song != null
+	//Nachbedingung: speichert einen neuen Song in der songList
 	public void addSongToList(Song song){
 		songList.add(song);
 	}
 
-	//liefert die songListe des Objektes zurueck
+	//Nachbedingung: liefert die songListe des Objektes zurueck
 	public ArrayList<Song> getSongsList(){
 		return songList;
 	}
 
-	//fuegt eine message zur messageList hinzu
+	//Vorbedingung: message != null
+	//Nachbedingung: fuegt eine message zur messageList hinzu
 	public void addMessage(String message){
 		messageList.add(new Message(message));
 	}
 	
-	//liefert eine lesbare String Repraesentation der messageList zurueck
+	//Nachbedingung: liefert eine lesbare String Repraesentation der messageList zurueck
 	public String getMessages()
 	{
 		String messages = "";
@@ -71,7 +73,7 @@ public class Member {
 		return messages;
 	}
 		
-	//liefert eine lesbare String Repraesentation der songList zurueck
+	//Nachbedingung: liefert eine lesbare String Repraesentation der songList zurueck
 	public String getSongsString(){
 		String songs = "";
 		
@@ -82,12 +84,12 @@ public class Member {
 		return songs;
 	}
 	
-	//liefert einen lesbare String des Objektes zurueck
+	//Nachbedingung: liefert einen lesbare String des Objektes zurueck
 	public String toString(){
 		return "Name: " + name + ", Instrument: " + instrument;
 	}
 	
-	//gibt den name des Objektes zurueck
+	//Nachbedingung: gibt den name des Objektes zurueck
 	public String getName()
 	{
 		return name;

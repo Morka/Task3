@@ -18,7 +18,7 @@ public abstract class Event{
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
 	//setzt bzw erzeugt alle noetigen Variablen des Objektes 
-	//location, date und member immer != null
+	//Vorbedingung: location, date und member immer != null
 	public Event(int duration, Location location, Calendar date, ArrayList<Member> member){
 		this.duration = duration;
 		this.location = location;
@@ -28,39 +28,37 @@ public abstract class Event{
 		this.eventMessages = new ArrayList<Message>();
 	}
 	
-	//liefert location zurueck
+	//Nachbedingung: liefert location zurueck
 	public Location getLocation(){
 		return location;
 	}
 	
-	//liefert duration zurueck
+	//Nachbedingung: liefert duration zurueck
 	public int getDuration(){
 		return duration;
 	}
 	
-	//setzt das date des Objektes
-	//date immer != null
+	//Nachbedingung: this.date ist auf date gesetzt
+	//Vorbedingung: date != null
 	public void setDate(Calendar date){
 		this.date = date;
 	}	
 	
-	//liefert den aktuellen Wert von date zurueck
+	//Nachbedingung: liefert den aktuellen Wert von date zurueck
 	public Calendar getDate(){
 		return date;
 	}
 	
-	//liefert die list der member zurueck
+	//Nachbedingung: liste von Member wird zurueckgegeben
 	public ArrayList<Member> getMemberList(){
 		
 		return this.member;
 		
 	}
-	/*
-	Die ArrayList "member" muss mindestens einen Member enthalten - Dies wird nirgends ueberprueft!
 	
-	Das ergebnis ist ein String, der entweder aussagt, dass keine Stücke gemeinsam gespielt werden können, oder die String mit
-	den Namen der Stücke getrennt durch ein newline
-	*/
+	//Vorbedingung: member != null
+	//Vorbedingung wird nicht ueberprueft!
+	//Nachbedingung: liefert String mit allen spielbaren Songs, oder "No Songs Playable"
 	
 	public String getStringOfSongsPlayable(){
 		String playableSongs = "";
@@ -89,11 +87,9 @@ public abstract class Event{
 		
 		return playableSongs;
 	}
-	/*
-	Die ArrayList "member" muss mindestens einen Member enthalten - Dies wird nirgends Uebeprueft
-	
-	es wird eine arraylist mit songs zurueckgegeben.
-	*/
+	//Vorbedingung: member != null
+	//Vorbedingung wird nicht ueberprueft!
+	//Nachbedingung: liefert liste mit spielbaren songs oder null zurueck
 	
 	public ArrayList<Song> getListOfSongsPlayable(){
 			
@@ -116,39 +112,40 @@ public abstract class Event{
 		return pSongs;
 	}
 	
-	//setzt prevEvents auf eine Liste von Events
-	//eventList immer != null
+	//Nachbedingung: eventList zu prevEvents hinzugefuegt
+	//Vorbedingung: eventList != null
 	public void setPreviousEvents(ArrayList<Event> eventList){
 		
 		this.prevEvents = eventList;
 		
 	}
 
-	//liefert den Inhalt von prevEvents zurueck
+	//Nachbedingung: prevEvents wird zurueckgegeben
 	public ArrayList<Event> getPreviousEvents(){
 		
 		return this.prevEvents;
 		
 	}
 	
-	//liefert einen lesbaren String des Objektes zurueck
+	//Nachbedingung: liefert einen lesbaren String des Objektes zurueck
 	public String toString(){
 		return "Location: " + location.toString() + ", Duration: " + duration + ", Date: " + dateFormat.format(date.getTime());
 	}
-
-	//fuegt eine neue EventMessage zur eventMessages Liste hinzu
+	//Vorbedingung: message != null, member != null
+	//Nachbedingung: eine Neue EventMessage in eventMessages aufgenommen. Abgelehnt.
 	public void declineEvent(String message, Member member)
 	{
 		eventMessages.add(new EventMessage(message, member, State.DECLINE));
 	}
-
-	//fuegt eine neue EventMessage zur eventMessages Liste hinzu
+	
+	//Vorbedingung: message != null, member != null
+	//Nachbedingung: eine Neue EventMessage in eventMessages aufgenommen. Angenommen.
 	public void acceptEvent(String message, Member member)
 	{
 		eventMessages.add(new EventMessage(message, member,  State.ACCEPT));
 	}	
 	
-	//gibt einen lesbaren String der eventMessages Liste zurueck
+	//Nachbedingung: gibt einen lesbaren String der eventMessages Liste zurueck
 	public String getMessages()
 	{
 		String messages = "";

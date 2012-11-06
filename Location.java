@@ -23,17 +23,18 @@ public class Location{
 				-> keine unterscheidung der klein-gro§ schreibweise
 	
 	*/
-	
+	//Vorbedingung: nameOfDescription != null
+	//Nachbedingung: placeDescriptions enthaelt die nameOfDescription in kleinbuchstaben
+	//				-> keine unterscheidung der klein-gro§ schreibweise
 	public void addDescription(String nameOfDescription, String description){
 		nameOfDescription = nameOfDescription.toLowerCase();
 		
 		placeDescriptions.put(nameOfDescription, description);			
 	}
+
+	//Vorbedingung: nameOfDescription != null
+	//Nachbedingung: liefert String mit description oder "Not Found"
 	
-	/*
-	nameOfDescription darf nicht null sein
-	gibt einen String zurueck 
-	*/
 	public String searchDescription(String nameOfDescription){
 		String description = "Not Found";
 		nameOfDescription = nameOfDescription.toLowerCase();
@@ -46,10 +47,8 @@ public class Location{
 		return description;
 	}
 	
-	/*
-	listOfNeededThings darf nicht null sein
-	wenn alle benštigten dinge vorhanden sind, soll true zurueckgegeben werden, sonst false
-	*/
+	//Vorbedingung: listOfNeededThings != null
+	//Nachbedingung: wenn alle Items von listOfNeededThings enthalten sind true, sonst false
 	
 	public boolean neededInfrastructure(ArrayList<String> listOfNeededThings){
 		boolean hasEverything = true;
@@ -62,7 +61,7 @@ public class Location{
 
 		return hasEverything;
 	}
-	
+	//Nachbedingung: liefert name der Location
 	public String toString(){
 		return name;
 	}

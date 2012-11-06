@@ -19,21 +19,27 @@ public class Band {
 
 	}
 
-	//fuegt einen Member zur memberList Liste hinzu
+	//Vorbedingung: newMember != null
+	//Nachbedingung: newMember ist zu memberList hinzugefuegt worden
 	public void addMember(Member newMember){
 
 		this.memberList.add(newMember);
 
 	}
 
-	//fuegt eine Location zur locationList Liste hinzu
+	//Vorbedingung: location != null
+	//Nachbedingung: location ist zu locationList hinzugefuegt worden
 	public void addLocation(Location location){
 
 		this.locationList.add(location);
 
 	}
+	
+	/*LOOOOOK AT THIS!!!!!!!!!!!!!*/
+	
+	//Vorbedingung: newEvent != null, newEvent.getMemberList() != null ???
+	//Nachbedingung: nachricht zu den Membern hinzugefuegt. newEvent in eventList aufgenommen
 
-	//fuegt ein Event zur eventList hinzu und schickt eine Nachricht an die Member des Events
 	public void addEvent(Event newEvent){
 		
 		ArrayList<Member> eventMemberList;
@@ -49,14 +55,15 @@ public class Band {
 
 	}
 
-	//fuegt einen Song zur songList Liste hinzu
+	//Vorbedingung: newSong != null
+	//Nachbedingung: newSong ist zu songList hinzugefuegt worden
 	public void addTrack(Song newSong){
 
 		this.songList.add(newSong);
 
 	}
 
-	//gibt einen lesbaren String der Events in der eventList zurueck
+	//Nachbedingung: gibt einen lesbaren String der Events in der eventList zurueck oder ""
 	public String showEvents(){
 		
 		String retString = "";
@@ -70,8 +77,8 @@ public class Band {
 		return retString;
 		
 	}
-
-	//gibt einen lesbaren String der Rehearsals and einem speziellen Tag zurueck
+	//Vorbedingung: specificDate != null
+	//Nachbedingung: gibt einen lesbaren String der Rehearsals and einem speziellen Tag zurueck oder ""
 	//BAD: Man koennte eine Methode machen die einfach einen dritten Parameter enthaelt der kennzeichnet,
 	//		was fuer ein Event- oder Eventsubtyp betrachtet werden soll. So wuerde man sich alle seperaten
 	//		Gig bzw Rehearsal methoden sparen
@@ -88,7 +95,8 @@ public class Band {
 
 	}
 
-	//gibt einen lesbaren String der Rehearsals in einem Zeitraum zurueck
+	//Vorbedingung: fromDate und toDate != null
+	//Nachbedingung: gibt einen lesbaren String der Rehearsals in einer Zeitperioode oder ""
 	//BAD: Man koennte eine Methode machen die einfach einen dritten Parameter enthaelt der kennzeichnet,
 	//		was fuer ein Event- oder Eventsubtyp betrachtet werden soll. So wuerde man sich alle seperaten
 	//		Gig bzw Rehearsal methoden sparen
@@ -112,7 +120,8 @@ public class Band {
 
 	}
 
-	//gibt einen lesbaren String der Gigs zu einem Zeitpunkt zurueck
+	//Vorbedingung: specificDate != null
+	//Nachbedingung: gibt einen lesbaren String der Gigs and einem speziellen Tag zurueck oder ""
 	//BAD: Man koennte eine Methode machen die einfach einen dritten Parameter enthaelt der kennzeichnet,
 	//		was fuer ein Event- oder Eventsubtyp betrachtet werden soll. So wuerde man sich alle seperaten
 	//		Gig bzw Rehearsal methoden sparen
@@ -126,7 +135,8 @@ public class Band {
 
 	}
 
-	//gibt einen lesbaren String der Gigs in einem Zeitraum zurueck
+	//Vorbedingung: fromDate und toDate != null
+	//Nachbedingung: gibt einen lesbaren String der Gigs in einem Zeitraum zurueck oder ""
 	//BAD: Man koennte eine Methode machen die einfach einen dritten Parameter enthaelt der kennzeichnet,
 	//		was fuer ein Event- oder Eventsubtyp betrachtet werden soll. So wuerde man sich alle seperaten
 	//		Gig bzw Rehearsal methoden sparen
@@ -150,7 +160,8 @@ public class Band {
 
 	}
 
-	//gibt einen lesbaren String der Events in einem Zeitraum zurueck
+	//Vorbedingung: fromDate und toDate != null
+	//Nachbedingung: gibt einen lesbaren String der Events in einem Zeitraum zurueck oder ""
 	//BAD: Man koennte eine Methode machen die einfach einen dritten Parameter enthaelt der kennzeichnet,
 	//		was fuer ein Event- oder Eventsubtyp betrachtet werden soll. So wuerde man sich alle seperaten
 	//		Gig bzw Rehearsal methoden sparen
@@ -174,7 +185,8 @@ public class Band {
 
 	}
 
-	//gibt einen lesbaren String der Events zu einem Zeitpunkt zurueck
+	//Vorbedingung: specificDate != null
+	//Nachbedingung: gibt einen lesbaren String der Event an einem speziellen Zeitpunkt oder ""
 	//BAD: Man koennte eine Methode machen die einfach einen dritten Parameter enthaelt der kennzeichnet,
 	//		was fuer ein Event- oder Eventsubtyp betrachtet werden soll. So wuerde man sich alle seperaten
 	//		Gig bzw Rehearsal methoden sparen
@@ -196,7 +208,8 @@ public class Band {
 
 	}
 
-	//gibt einen lesbaren String der Songs in einem Zeitraum zurueck
+	//Vorbedingung: fromDate und toDate != null
+	//Nachbedingung: gibt einen lesbaren String der Songs in einem Zeitraum zurueck oder ""
 	public String showSongs(Calendar fromDate, Calendar toDate){
 		String retString = "";
 		fromDate.add(Calendar.DAY_OF_MONTH, -1);
@@ -222,23 +235,25 @@ public class Band {
 	}
 
 
-	//gibt eine List von Events zurueck
-	 //BAD: überflüssig, wenn getRents(...) und getFees(...) von Budget in Band verschoben wird
+	//Nachbedingung: gibt eine List von Events zurueck
+	 //BAD: ueberfluessig, wenn getRents(...) und getFees(...) von Budget in Band verschoben wird
 	public ArrayList<Event> getEventList()
 	{
 		return eventList;
 	}
 
-	//gibt eine liste der Budges zurueck
+	//Nachbedingung: gibt eine liste der Budges zurueck
 	 //BAD: überflüssig, wenn getMisc(...) und getAllMisc(...) von Budget in Band verschoben wird
 	public ArrayList<Budget> getBudgetList()
 	{
 		return budgetList;
 	}
 
-	//speichert eine neue version eines Events in die eventList und verschiebt das alte in die 
-	//vorversions EventList des neuen Events.
-	//newEvent immer != null
+	
+	//Vorbedingung: newEvent != null
+	//Nachbedingung: newEvent ist in eventList und originalEvent ist in prevEvents liste von newEvents
+	//				 Ein String (benachrichtigung) ist zur messageList der member hinzugefuegt
+	
 	public void updateEvent(Event originalEvent, Event newEvent){
 		ArrayList<Event> tmpList = new ArrayList<Event>();
 		ArrayList<Member> eventMemberList = new ArrayList<Member>();
@@ -269,10 +284,11 @@ public class Band {
 
 	}
 
-	//holt sich eine Vorversion aus der EventList eines UndoEvents und fuegt die Vorversion in die Eventlist des der Band
 	//fuegt ausserdem die version des UndoEvents in die Vorversionsliste des neuen Events ein
-	//undoEvent immer != null
-	//undoLevel < laenge der Vorversionsliste im undoEvent
+	//Vorbedingung: undoEvent != null und undoLevel < laenge der Vorversionsliste im undoEvent
+	//Nachbedingung: vorversion von undoEvent ist in eventList eingefuegt; undoEvents ist in 
+	//   	  	 	 Vorversionsliste des neuen Events
+	
 	public void undoEventChange(Event undoEvent, int undoLevel){
 
 		ArrayList<Event> tmpList;
@@ -303,8 +319,9 @@ public class Band {
 		}
 
 	}
-
-	//loescht ein Event aus der EventList und fuegt es in die deletedEventList hinzu
+	//Vorbedingung: eventToDelet != null
+	//Nachbedingung: evenToDelete aus eventList geloescht und deletedEventList hinzugefuegt
+	
 	public void deleteEvent(Event eventToDelete){
 		ArrayList<Member> eventMemberList;
 		if(this.eventList.contains(eventToDelete)){
@@ -324,8 +341,9 @@ public class Band {
 
 	}
 
-	//holt sich ein spezifiziertes Event aus der deletedEventList und fuegt es zur aktuellen EventList hinzu und loescht es aus der deltedEventList
-	//eventToRecover immer != null
+	//Vorbedingung: eventToRecover != null
+	//Nachbedingung: eventToRecover ist in eventList aufgenommen und aus deletedEventList
+	//				 geloescht
 	public void undeleteEvent(Event eventToRecover){
 		
 		ArrayList<Member> eventMemberList;
@@ -347,8 +365,12 @@ public class Band {
 
 	}
 
-	//Sucht anhand einer einer Liste von benoetigten Infrastrukturen nach einer passenden Location und gibt diese 
+	//Sucht anhand einer Liste von benoetigten Infrastrukturen nach 
+	//einer passenden Location und gibt diese 
 	//	als lesbare String Repraesentation zurueck
+	//Nachbedingung: Sting der "Every Location is Acceptable", "", oder namen der Locations
+	//				 beinhaltet
+	
 	public String searchForInfrastracture(ArrayList<String> listOfNeededThings){
 		String stringOfGoodLocations = "";
 
@@ -366,7 +388,9 @@ public class Band {
 	}
 	
 	
-	//fuegt ein neues Budget Objekt zur budgetList hinzu
+	//Vorbedingung: name != null
+	//Nachbedingung: budgetList hat eine neues Budget aufgenommen
+	
 	public void addBudget(String name, int value)
 	{
 		budgetList.add(new Budget(name,value));	
